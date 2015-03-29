@@ -1,16 +1,15 @@
 class SuppliersController < ApplicationController
-
-	# show 	all sppliers;
+	# Show 	all sppliers
 	def index
 		@search = Supplier.search(params[:q])
 		@suppliers_search = @search.result
 		@suppliers = @suppliers_search.paginate(page: params[:page])
 	end
 
-	#Show supplier associated with one especific id.
+	# Show supplier associated with one especific id
 	def show
 		@supplier = Supplier.find(params[:id])
-        @hash = hash_format_graph
+    @hash = hash_format_graph
 	end
 
 	def hash_format_graph
@@ -20,13 +19,11 @@ class SuppliersController < ApplicationController
 		quantity = array_quantity.inject(:+)
 		
 		unless quantity_total.nil?
-      		unless quantity.nil?
-      			outros = (quantity_total - quantity)
-      			another_hash = {"outros" => outros }
-      	  		hash = hash.merge(another_hash)
-           end
-    	end 
+      unless quantity.nil?
+      	outros = (quantity_total - quantity)
+      	another_hash = {"outros" => outros }
+      	hash = hash.merge(another_hash)
+      end
+    end 
 	end
-
-
 end

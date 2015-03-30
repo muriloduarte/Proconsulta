@@ -12,6 +12,7 @@ class SuppliersController < ApplicationController
     @hash = hash_format_graph
 	end
 
+	# Format the graph of suppliers
 	def hash_format_graph
 		quantity_total = @supplier.customer_services.count
 		hash = @supplier.customer_services.order('count_all desc').limit(10).group(:description_problem_customer_service).count

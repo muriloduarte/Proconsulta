@@ -20,6 +20,7 @@ class UnityProconsController < ApplicationController
 		end
 	end
 
+	# Return the rating from one especific procon unity 
 	def return_hash
 		hash = Hash.new
 		all_rating = Rating.where("unity_procon_id = ?", params[:id])
@@ -47,6 +48,7 @@ class UnityProconsController < ApplicationController
 		hash
 	end
 
+	# Order the procon unitys
 	def ranking
 		@unity_procons = UnityProcon.order(:position_unity_procon)
 	end
@@ -54,6 +56,7 @@ class UnityProconsController < ApplicationController
 	def edit
 	end
 
+	# Search the procon unity by UF(Unidade da Federacao) and another param
 	def custom_search
 		unless request.xhr? || params[:page].nil? || params[:search].nil?
 			redirect_to root_path
@@ -64,6 +67,7 @@ class UnityProconsController < ApplicationController
 		render :json=>data.to_json
 	end
 
+	# Search the procon unity and order by ranking 
 	def custom_search_ranking
 		unless request.xhr? || params[:page].nil? || params[:search].nil?
 			redirect_to root_path
@@ -79,6 +83,7 @@ class UnityProconsController < ApplicationController
 		render :json=>data.to_json
 	end
 
+	# Uptade the procon unity's rating 
 	def update
 		@unity_procon = UnityProcon.find(params[:id])
  		@user = current_user

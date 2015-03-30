@@ -5,12 +5,12 @@ class UsersController < ApplicationController
 	def allusers
 		@users = User.all
 	end
-	
+
 	# Return to index all users
 	def index
 		@user = User.all
 	end
-	
+
 	# Create new user
 	def new
 		@user = User.new

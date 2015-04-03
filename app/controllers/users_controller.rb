@@ -1,4 +1,8 @@
-# User action controller
+################################################################################File: users_controller.rb
+#Purpose: Users actions controller
+#Notice: Proconsulta. Todos Direitos Reservados
+###############################################################################
+
 class UsersController < ApplicationController
 
 	# Returns all users

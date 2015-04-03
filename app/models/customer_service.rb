@@ -1,4 +1,8 @@
-# Customer service model
+################################################################################File: customer_service.rb
+#Purpose: Customer service model
+#Notice: Proconsulta. Todos Direitos Reservados
+###############################################################################
+
 class CustomerService < ActiveRecord::Base
 
 	belongs_to :supplier

@@ -1,8 +1,8 @@
-################################################################################File: users_controller.rb
-#Purpose: Users actions controller
-#Notice: Proconsulta. Todos Direitos Reservados
-###############################################################################
-
+# File: users_controller.rb
+# Purpose of class: Users actions controller
+# This software follows GPL license.
+# Proconsulta Group
+# FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília
 class UsersController < ApplicationController
 
 	# Returns all users

@@ -1,3 +1,8 @@
+# File: sessions_helper.rb 
+# Purpose of module: This is a helper and contains methods for sessions      	# control and view 
+# This software follows GPL license.
+# TEM-DF Group
+# FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília
 module SessionsHelper
 
 	def sign_in(user)

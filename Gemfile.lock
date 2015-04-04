@@ -75,8 +75,10 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.5)
+    geocoder (1.2.8)
     gherkin (2.12.2)
       multi_json (~> 1.3)
+    gmaps4rails (2.1.2)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -118,6 +120,8 @@ GEM
     mysql2 (0.3.16)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
     polyglot (0.3.5)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -146,6 +150,12 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.3.2)
+    ransack (1.6.4)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -233,12 +243,15 @@ DEPENDENCIES
   cucumber-rails (= 1.2.1)
   database_cleaner (= 0.7.0)
   factory_girl_rails (= 4.1.0)
+  geocoder
+  gmaps4rails
   guard-rspec
   highcharts-rails (~> 4.0.4)
   jquery-rails
   less-rails
   mysql2
   rails (= 3.2.15)
+  ransack
   rspec-its
   rspec-rails
   selenium-webdriver

@@ -1,3 +1,8 @@
+# File: user.rb 
+# Purpose of class: This class is a model and contains attributes,            # associations and business methods for User entity.
+# This software follows GPL license.
+# TEM-DF Group
+# FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília
 class User < ActiveRecord::Base
 	attr_accessible :email_user, :name_user, :password, :password_confirmation, :address_user
 	

@@ -2,7 +2,7 @@
 # Purpose of class: This class is a controller and contains action methods for 
 # custumer services view.
 # This software follows GPL license.
-# TEM-DF Group
+# Proconsulta Group.
 # FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília
 class CustomerServicesController < ApplicationController
 

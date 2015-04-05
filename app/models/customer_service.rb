@@ -1,12 +1,11 @@
-################################################################################File: customer_service.rb
-#Purpose: Customer service model
-#Notice: Proconsulta. Todos Direitos Reservados
-###############################################################################
-
+# File: customer_service.rb
+# Purpose of class: Customer service model
+# This software follows GPL license.
+# Proconsulta Group
+# FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília
 class CustomerService < ActiveRecord::Base
 
 	belongs_to :supplier
-	# Adding atributs to customerService
 	attr_accessible :year_customer_service, 
 	                :trimester_customer_service,
 								  :month_customer_service, 

@@ -1,3 +1,8 @@
+# File: suppliers_controller.rb
+# Purpose of class: Contains action methods for supliers view.
+# This software follows GPL license.
+# Proconsulta Group.
+# FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 class SuppliersController < ApplicationController
 	# Show 	all sppliers
 	def index
@@ -12,6 +17,7 @@ class SuppliersController < ApplicationController
     @hash = hash_format_graph
 	end
 
+	# Format the graph of suppliers
 	def hash_format_graph
 		quantity_total = @supplier.customer_services.count
 		hash = @supplier.customer_services.order('count_all desc').limit(10).group(:description_problem_customer_service).count

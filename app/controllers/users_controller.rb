@@ -1,24 +1,31 @@
+# File: users_controller.rb
+# Purpose of class: Users actions controller
+# This software follows GPL license.
+# Proconsulta Group
+# FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília
 class UsersController < ApplicationController
 
+	# Returns all users
 	def allusers
 		@users = User.all
 	end
 
+	# Return to index all users
 	def index
 		@user = User.all
 	end
 
+	# Create new user
 	def new
 		@user = User.new
 	end
 
 	# Create and associate one user to one id.
-
 	def create
 		@user = User.new(user_params)
 		if @user.save
 			sign_in @user
-			flash[:sucess] = "Seja bem-vindo!"
+		 	flash[:sucess] = "Seja bem-vindo!"
 			redirect_to :action => :show, :id => @user.id
 		else
 			render 'new'
@@ -35,7 +42,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if !signed_in? || current_user != @user
 			redirect_to root_path
-			flash[:danger] = "Esta conta nao e sua."
+			flash[:danger] = "Esta conta nao é sua."
 		end
 	end
 
@@ -43,7 +50,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params)
-			flash[:sucess] = "Usuario editado com exito!"
+			flash[:sucess] = "Usuário editado com exito!"
 			sign_in(@user)
 			redirect_to @user
 		else
@@ -56,19 +63,20 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if current_user != @user
 			redirect_to root_path
-			flash[:error] = "Esta conta nao e sua."
+			flash[:error] = "Esta conta nao é sua."
 		else
 			@user.destroy
 			redirect_to root_path
-			flash[:sucess] = "Usuario excluido com exito."
+			flash[:sucess] = "Usuário excluido com exito."
 		end
 	end
 
   private
-
 	def user_params
-	params.require(:user).permit(:name_user, :email_user,
-						:address_user, :password_confirmation,
-						:password)
+	params.require(:user).permit(:name_user, 
+															 :email_user,
+															 :address_user, 
+															 :password_confirmation,
+															 :password)
 	end
 end

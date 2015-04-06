@@ -4,6 +4,8 @@
 # Proconsulta Group.
 # FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília
 module ApplicationHelper
+	
+	# Determines the page header
 	def full_title(page_title)
 		base_title = "PROCONSULTA"
 		if page_title.empty?

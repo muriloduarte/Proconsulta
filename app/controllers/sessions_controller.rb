@@ -1,3 +1,8 @@
+# File: sessions_controller.rb
++# Purpose of class: Contains action methods for sessions view.
++# This software follows GPL license.
++# Proconsulta Group.
++# FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 class SessionsController < ApplicationController
 
 	def new

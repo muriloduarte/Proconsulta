@@ -1,3 +1,8 @@
+# File: sessions_controller.rb
++# Purpose of class: Contains action methods for sessions view.
++# This software follows GPL license.
++# Proconsulta Group.
++# FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 class SessionsController < ApplicationController
 
 	def new
@@ -12,7 +17,7 @@ class SessionsController < ApplicationController
 			flash[:sucess] = "Logado com exito!"
 		else
 			flash.now[:error] = "Combinacao invalida de email e senha."
-      			render 'new'
+      render 'new'
 		end
 	end
 
@@ -22,6 +27,4 @@ class SessionsController < ApplicationController
 		sign_out
 		redirect_to root_url
 	end
-
-
 end

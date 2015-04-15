@@ -40,6 +40,7 @@ class UsersController < ApplicationController
 	# Edit one user.
 	def edit
 		@user = User.find(params[:id])
+		# Valid if the User is logged in, this is the right
 		if !signed_in? || current_user != @user
 			redirect_to root_path
 			flash[:danger] = "Esta conta nao é sua."

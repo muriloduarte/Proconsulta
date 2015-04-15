@@ -20,14 +20,15 @@ class SuppliersController < ApplicationController
 	# Format the graph of suppliers
 	def hash_format_graph
 		quantity_total = @supplier.customer_services.count
+		# Sort in descending order @supplier.customer_services
 		hash = @supplier.customer_services.order('count_all desc').limit(10).group(:description_problem_customer_service).count
 		array_quantity =  hash.map { |key, value| value }
 		quantity = array_quantity.inject(:+)
 		
 		unless quantity_total.nil?
       unless quantity.nil?
-      	outros = (quantity_total - quantity)
-      	another_hash = {"outros" => outros }
+      	quantity_final = (quantity_total - quantity)
+      	another_hash = {"quantity_final" => quantity_final }
       	hash = hash.merge(another_hash)
       end
     end 

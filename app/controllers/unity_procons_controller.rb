@@ -69,6 +69,7 @@ class UnityProconsController < ApplicationController
 		end
 		sql = "1=1"
 		sql = sql
+		# Data receives a search of unity procon
 		data = UnityProcon.where("uf_procon = ?", params[:search]).paginate(:page=>1)
 		render :json=>data.to_json
 	end
@@ -81,6 +82,7 @@ class UnityProconsController < ApplicationController
 		end
 		sql = "1=1"
 		sql = sql
+		# Sort in descending order unity procons' rating if a search parameter is # entered or not
 		if params[:search] == ""
 			data = UnityProcon.where("average_pontuation is not null").order('average_pontuation DESC').paginate(:page=>1)
 		else
@@ -93,6 +95,7 @@ class UnityProconsController < ApplicationController
 	def update
 		@unity_procon = UnityProcon.find(params[:id])
  		@user = current_user
+ 		# Update unity procons' rating if this is possible
 		if (@unity_procon.update_attributes(params[:unity_procon]))
 			@rating = @unity_procon.ratings.last
 			@rating.user_id = @user.id

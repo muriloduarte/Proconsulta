@@ -23,6 +23,8 @@ class UsersController < ApplicationController
 	# Create and associate one user to one id.
 	def create
 		@user = User.new(user_params)
+
+		# If user was save with succes, then sign in automaticly, else, render new.
 		if @user.save
 			sign_in @user
 		 	flash[:sucess] = "Seja bem-vindo!"
@@ -32,24 +34,32 @@ class UsersController < ApplicationController
 		end
 	end
 
-	# Show one especific user.
+	# Show an especific user.
 	def show
+		# Find all users with id passed by params.
 		@user = User.find(params[:id])
 	end
 
-	# Edit one user.
+	# Edit an user.
 	def edit
 		@user = User.find(params[:id])
-		# Valid if the User is logged in, this is the right
+
+		# Valid if the user not is logged, is true, redirect to home.
 		if !signed_in? || current_user != @user
 			redirect_to root_path
 			flash[:danger] = "Esta conta nao é sua."
+		else
+			# nothing to do.
 		end
 	end
 
 	# Update one edited user.
 	def update
 		@user = User.find(params[:id])
+
+		# Verify if the user has his attributes update, if true: show alert,
+		# signin and redirect to @user.
+		# Else, go to edit view.
 		if @user.update_attributes(user_params)
 			flash[:sucess] = "Usuário editado com exito!"
 			sign_in(@user)
@@ -59,9 +69,13 @@ class UsersController < ApplicationController
 		end
 	end
 
-	# delete one user.
+	# delete an user.
 	def destroy
 		@user = User.find(params[:id])
+
+		# If the logged current user different of instance @user, then redirect
+		# home and show alert message.
+		# Else destroy the instance user, redirect to home and show succes message.
 		if current_user != @user
 			redirect_to root_path
 			flash[:error] = "Esta conta nao é sua."

@@ -1,5 +1,6 @@
 # File: unity_procon.rb
-# Purpose of class: Responsible for processing, validating, associate, other tasks in the treatment of unity procon's data.
+# Purpose of class: Responsible for processing, validating, associate, other
+# tasks in the treatment of unity procon's data.
 # This software follows GPL license.
 # Proconsulta Group.
 # FGA-UnB Faculdade de Engenharias do Gama - Universidade de Brasília.

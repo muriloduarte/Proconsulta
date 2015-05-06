@@ -43,11 +43,10 @@ class UsersController < ApplicationController
 	# Edit an user.
 	def edit
 		@user = User.find(params[:id])
-
 		# Valid if the user not is logged, is true, redirect to home.
 		if !signed_in? || current_user != @user
 			redirect_to root_path
-			flash[:danger] = "Esta conta nao é sua."
+			flash[:danger] = "Essa conta nao é sua!"
 		else
 			# nothing to do.
 		end
@@ -56,7 +55,6 @@ class UsersController < ApplicationController
 	# Update one edited user.
 	def update
 		@user = User.find(params[:id])
-
 		# Verify if the user has his attributes update, if true: show alert,
 		# signin and redirect to @user.
 		# Else, go to edit view.
@@ -72,13 +70,12 @@ class UsersController < ApplicationController
 	# delete an user.
 	def destroy
 		@user = User.find(params[:id])
-
 		# If the logged current user different of instance @user, then redirect
 		# home and show alert message.
 		# Else destroy the instance user, redirect to home and show succes message.
 		if current_user != @user
 			redirect_to root_path
-			flash[:error] = "Esta conta nao é sua."
+			flash[:error] = "Essa conta nao é sua!"
 		else
 			@user.destroy
 			redirect_to root_path

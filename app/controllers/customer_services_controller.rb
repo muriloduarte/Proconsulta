@@ -40,6 +40,8 @@ class CustomerServicesController < ApplicationController
 		hash
 	end
 
+		# REVIEW: This constants can be in module or symbol hash. Maybe stay
+		# better.
 		QUANTITY_ALL = 0
 		QUANTITY_DIRECT_COMPLAINT = 1
 		QUANTITY_PRELIMINARY_SERVICE = 2
@@ -60,7 +62,6 @@ class CustomerServicesController < ApplicationController
 			else
 				# Nothing to do.
 			end
-			# To apply this case on style sheet ruby
 			hash[uf.description_uf] = case type_service
 																when QUANTITY_ALL then uf.quantity_uf
 																when QUANTITY_DIRECT_COMPLAINT
@@ -158,6 +159,4 @@ class CustomerServicesController < ApplicationController
 			# Nothing to do
 		end
 	end
-
-
 end

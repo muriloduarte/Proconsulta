@@ -29,7 +29,10 @@ class CustomerServicesController < ApplicationController
 	def return_hash
 		hash = []
 		all_uf = UfHelper.all
-		all_uf.each do | uf|
+		all_uf.each do |uf|
+
+			# REVIEW: modulate this conditional. 
+			# 	filter_customer_service_by_type use the same conditional. 
 			if uf.description_uf == nil
 				uf.description_uf = "vazio"
 			else
@@ -55,6 +58,8 @@ class CustomerServicesController < ApplicationController
 		all_uf = UfHelper.all
 		type_service = params[:type].to_i
 		all_uf.each do |uf|
+
+			# REVIEW: modulate this conditional.
 			if uf.description_uf == nil
 				uf.description_uf = "vazio"
 			else
@@ -83,11 +88,15 @@ class CustomerServicesController < ApplicationController
 		render :json => hash.to_json
 	end
 
+	not_exist_region_description = region.description_region == nil
 	def return_hash_region
 		hash = []
 		all_region = Region.all
 		all_region.each do |region|
-			if region.description_region == nil
+
+			# REVIEW: this conditional must modulate in helper. 
+			# 	The filter_custumer_service_by_type_region use the same conditional.
+			if not_exist_region_description
 				region.description_region = "vazio"
 			else
 				# Nothing to do
@@ -123,6 +132,8 @@ class CustomerServicesController < ApplicationController
 		all_region = Region.all
 		type_service = params[:type].to_i
 		all_region.each do |region|
+
+			# REVIEW: modulate this conditional.
 			if region.description_region == nil
 				region.description_region = "vazio"
 			end

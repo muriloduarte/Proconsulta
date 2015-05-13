@@ -30,7 +30,7 @@ class CustomerServicesController < ApplicationController
 		hash = []
 		all_uf = UfHelper.all
 		all_uf.each do |uf|
-			if is_uf_description_nil?(uf) == true
+			if is_uf_description_nil?(uf)
 				uf.description_uf = "vazio"
 			else
 				# Nothing to do.
@@ -55,7 +55,7 @@ class CustomerServicesController < ApplicationController
 		all_uf = UfHelper.all
 		type_service = params[:type].to_i
 		all_uf.each do |uf|
-			if is_uf_description_nil?(uf) == true
+			if is_uf_description_nil?(uf)
 				uf.description_uf = "vazio"
 			else
 				# Nothing to do.
@@ -87,7 +87,7 @@ class CustomerServicesController < ApplicationController
 		hash = []
 		all_region = Region.all
 		all_region.each do |region|
-			if is_region_description_nil?(region) == true
+			if is_region_description_nil?(region)
 				region.description_region = "vazio"
 			else
 				# Nothing to do.
@@ -123,9 +123,7 @@ class CustomerServicesController < ApplicationController
 		all_region = Region.all
 		type_service = params[:type].to_i
 		all_region.each do |region|
-
-			# REVIEW: modulate this conditional.
-			if is_region_description_nil?(region) == true
+			if is_region_description_nil?(region)
 				region.description_region = "vazio"
 			else
 				# Nothing to do.
@@ -137,6 +135,8 @@ class CustomerServicesController < ApplicationController
 
 	private
 
+	# This method verify if the region object passed by argument do not have 
+	# description. Return true if do not have, else, false.
 	def is_region_description_nil? (region)
 		not_exist_region_description = region.description_region == nil
 
@@ -146,7 +146,9 @@ class CustomerServicesController < ApplicationController
 			false
 		end
 	end
-
+	
+	# This method verify if the uf object passed by argument do not have 
+	# description. Return true if do not have, else, false.
 	def is_uf_description_nil? (uf)
 		not_exist_uf_description = uf.description_uf == nil
 

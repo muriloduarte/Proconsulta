@@ -18,7 +18,7 @@ class CustomerServicesController < ApplicationController
 		@customer_services = CustomerService.paginate(page: params[:page])
 		@hash_uf = return_hash
 		@hash_uf_filter = []
-		@hash_region = return_hash_region#
+		@hash_region = return_hash_region
 	end
 
 	# List Customer_Service related to one especific id.
@@ -30,13 +30,10 @@ class CustomerServicesController < ApplicationController
 		hash = []
 		all_uf = UfHelper.all
 		all_uf.each do |uf|
-
-			# REVIEW: modulate this conditional. 
-			# 	filter_customer_service_by_type use the same conditional. 
-			if uf.description_uf == nil
+			if is_uf_description_nil?(uf) == true
 				uf.description_uf = "vazio"
 			else
-				# Nothing to do
+				# Nothing to do.
 			end
 			hash[uf.description_uf] = uf.quantity_uf.to_i
 		end
@@ -58,12 +55,10 @@ class CustomerServicesController < ApplicationController
 		all_uf = UfHelper.all
 		type_service = params[:type].to_i
 		all_uf.each do |uf|
-
-			# REVIEW: modulate this conditional.
-			if uf.description_uf == nil
+			if is_uf_description_nil?(uf) == true
 				uf.description_uf = "vazio"
 			else
-				# Nothing to do
+				# Nothing to do.
 			end
 			# To apply this case on style sheet ruby
 			hash[uf.description_uf] = case type_service
@@ -88,18 +83,14 @@ class CustomerServicesController < ApplicationController
 		render :json => hash.to_json
 	end
 
-	not_exist_region_description = region.description_region == nil
 	def return_hash_region
 		hash = []
 		all_region = Region.all
 		all_region.each do |region|
-
-			# REVIEW: this conditional must modulate in helper. 
-			# 	The filter_custumer_service_by_type_region use the same conditional.
-			if not_exist_region_description
+			if is_region_description_nil?(region) == true
 				region.description_region = "vazio"
 			else
-				# Nothing to do
+				# Nothing to do.
 			end
 			hash[region.description_region] = region.quantity_region.to_i
 		end
@@ -134,11 +125,37 @@ class CustomerServicesController < ApplicationController
 		all_region.each do |region|
 
 			# REVIEW: modulate this conditional.
-			if region.description_region == nil
+			if is_region_description_nil?(region) == true
 				region.description_region = "vazio"
+			else
+				# Nothing to do.
 			end
 			compare_customer_service_by_type(hash, region, type_service)
 		end
 		render :json => hash.to_json
 	end
+
+	private
+
+	def is_region_description_nil? (region)
+		not_exist_region_description = region.description_region == nil
+
+		if not_exist_region_description
+			true
+		else
+			false
+		end
+	end
+
+	def is_uf_description_nil? (uf)
+		not_exist_uf_description = uf.description_uf == nil
+
+		if not_exist_uf_description
+			true
+		else
+			# Nothing to do
+		end
+	end
+
+
 end

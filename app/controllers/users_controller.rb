@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 	# Return to index all users
 	def index
 		@user = User.all
-		CUSTOM_LOGGER.info("Start to return users #{@user.to_yaml}")
 	end
 
 	# Create new user
